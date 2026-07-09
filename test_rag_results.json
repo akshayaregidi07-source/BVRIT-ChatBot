@@ -1,0 +1,53 @@
+{
+  "all_pass": false,
+  "results": [
+    {
+      "query": "What departments does BVRIT offer?",
+      "expected": "rag",
+      "actual": "rag",
+      "status": "PASS",
+      "answer_preview": "BVRIT offers seven B.Tech programmes across seven departments. The specific departments include:\n\n1. Computer Science & Engineering (CSE)\n2. Informati",
+      "citations": 4
+    },
+    {
+      "query": "What is the annual fee for CSE?",
+      "expected": "rag",
+      "actual": "rag",
+      "status": "PASS",
+      "answer_preview": "The annual fee for B.Tech in Computer Science and Engineering (CSE) is ₹1,20,000.",
+      "citations": 4
+    },
+    {
+      "query": "What is the total 4-year tuition for CSE?",
+      "expected": "tool",
+      "actual": "rag",
+      "status": "FAIL",
+      "answer_preview": "The total 4-year tuition for B.Tech in Computer Science and Engineering (CSE) is ₹4,80,000.",
+      "citations": 4
+    },
+    {
+      "query": "Who is the principal of BVRIT?",
+      "expected": "rag",
+      "actual": "rag",
+      "status": "PASS",
+      "answer_preview": "The principal of BVRIT Hyderabad College of Engineering for Women can be contacted through the Principal’s Office at principal@bvrit.ac.in or by phone",
+      "citations": 4
+    },
+    {
+      "query": "Hello, how are you?",
+      "expected": "conversation",
+      "actual": "conversation",
+      "status": "PASS",
+      "answer_preview": "Hello! I'm just a program, but I'm here and ready to help you with any questions you have about BVRIT Hyderabad College of Engineering for Women. How ",
+      "citations": 0
+    },
+    {
+      "query": "If I get a 15% scholarship, what's my annual CSE fee?",
+      "expected": "tool",
+      "actual": "tool:fee_calculator",
+      "status": "PASS",
+      "answer_preview": "Annual fee after 15% scholarship: ₹102,000\n  • Original fee: ₹120,000\n  • Discount (15%): ₹18,000\n\n*(Fee information retrieved from the college docume",
+      "citations": 4
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+{
+  "routing": "rag",
+  "answer": "BVRIT offers seven B.Tech programmes across seven departments. The specific departments include:\n\n1. Computer Science & Engineering (CSE)\n2. Information Technology (IT)\n3. Electronics and Communication Engineering (ECE)\n4. Electrical and Electronics Engineering (EEE)\n5. Mechanical Engineering\n6. Civil Engineering\n7. Data Science\n\nEach department maintains dedicated laboratories, a department library, and active industry partnerships."
+}

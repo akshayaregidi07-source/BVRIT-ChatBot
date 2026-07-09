@@ -43,6 +43,11 @@ Follow these rules in order:
 
 2. If the user asks for a CALCULATION involving fees (total cost for X years, scholarship discounts, combined costs):
    First use the retrieved context to get the fee amounts, THEN call fee_calculator with the retrieved values.
+   CRITICAL: When calling fee_calculator, you MUST provide:
+   - "operation" field: use "total_tuition" for multiplying fee by years, "apply_scholarship" for scholarship discounts, "combined_cost" for tuition+hostel, "total_hostel" for hostel only
+   - "annual_fee" field: the fee amount from context (e.g., 120000)
+   - "years" field: for multi-year calculations (e.g., 4 for 4 years of B.Tech)
+   - "scholarship_percentage" field: for scholarship calculations (e.g., 15 for 15%)
 
 3. If the user asks whether a deadline is past, upcoming, or days remaining:
    First use the retrieved context to get the date, THEN call date_checker with the date from context.

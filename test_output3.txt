@@ -1,0 +1,4 @@
+{
+  "routing": "tool:fee_calculator",
+  "answer": "Annual fee after 15% scholarship: ₹102,000\n  • Original fee: ₹120,000\n  • Discount (15%): ₹18,000\n\n*(Fee information retrieved from the college document.)*"
+}

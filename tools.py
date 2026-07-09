@@ -34,11 +34,11 @@ FEE_CALCULATOR_TOOL = {
                     "type": "string",
                     "enum": ["total_tuition", "total_hostel", "combined_cost", "apply_scholarship"],
                     "description": (
-                        "The type of fee calculation to perform: "
-                        "'total_tuition' = annual_fee * years, "
-                        "'total_hostel' = annual_hostel * years, "
-                        "'combined_cost' = (annual_fee + annual_hostel) * years, "
-                        "'apply_scholarship' = annual_fee * (1 - scholarship_pct/100)"
+                        "The type of fee calculation to perform. CRITICAL: You MUST set this to one of the valid values. "
+                        "• 'total_tuition' = annual_fee * years (requires annual_fee and years) "
+                        "• 'total_hostel' = annual_hostel * years (requires annual_hostel and years) "
+                        "• 'combined_cost' = (annual_fee + annual_hostel) * years (requires annual_fee, annual_hostel, years) "
+                        "• 'apply_scholarship' = annual_fee * (1 - scholarship_percentage/100) (requires annual_fee and scholarship_percentage)"
                     ),
                 },
                 "annual_fee": {
@@ -66,13 +66,7 @@ FEE_CALCULATOR_TOOL = {
                     "maximum": 100,
                 },
             },
-            "required": ["operation"],
-            "dependencies": {
-                "total_tuition": ["annual_fee", "years"],
-                "total_hostel": ["annual_hostel", "years"],
-                "combined_cost": ["annual_fee", "annual_hostel", "years"],
-                "apply_scholarship": ["annual_fee", "scholarship_percentage"],
-            },
+            "required": ["operation", "annual_fee"],
         },
     },
 }
@@ -470,22 +464,25 @@ def execute_tool_call(tool_call: dict) -> dict:
     Execute a tool call from the LLM response.
     
     Args:
-        tool_call: dict with 'name' and 'arguments' (JSON string)
+        tool_call: dict with 'name' and 'args' or 'arguments' (LangChain uses 'args', OpenAI API uses 'arguments')
     
     Returns:
         dict with 'tool' name and 'result' of execution
     """
     name = tool_call.get("name", "")
-    arguments_str = tool_call.get("arguments", "{}")
+    # LangChain tool_calls use 'args' (dict), OpenAI API responses use 'arguments' (JSON string)
+    arguments = tool_call.get("args", tool_call.get("arguments", {}))
     
-    try:
-        arguments = json.loads(arguments_str) if isinstance(arguments_str, str) else arguments_str
-    except json.JSONDecodeError:
-        return {
-            "tool": name,
-            "error": f"Failed to parse arguments: {arguments_str}",
-            "result": None,
-        }
+    # If it's a string, parse as JSON
+    if isinstance(arguments, str):
+        try:
+            arguments = json.loads(arguments)
+        except json.JSONDecodeError:
+            return {
+                "tool": name,
+                "error": f"Failed to parse arguments: {arguments}",
+                "result": None,
+            }
     
     if name not in TOOL_FUNCTIONS:
         return {
