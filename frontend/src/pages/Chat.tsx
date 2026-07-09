@@ -11,7 +11,8 @@ import { cn } from '@/lib/utils';
 import { ChatMessage, RetrievedDoc } from '@/types';
 import { knowledgeBase, sessionStats, suggestionCards } from '@/lib/data';
 
-const API_URL = 'http://localhost:8000';
+// Use '/api' prefix — Vite proxies this to the backend on port 8000
+const API_URL = '/api';
 
 const iconMap: Record<string, React.ElementType> = {
   GraduationCap, Briefcase, Building2, IndianRupee,
