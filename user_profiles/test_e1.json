@@ -1,0 +1,22 @@
+{
+  "user_id": "test_e1",
+  "name": null,
+  "branch_interest": "CSE",
+  "language": "english",
+  "detail_level": "detailed",
+  "preferred_format": "paragraph",
+  "prior_topics": [
+    "Branch",
+    "Department",
+    "Placement",
+    "Fee",
+    "Hostel",
+    "Campus"
+  ],
+  "last_session_summary": "",
+  "fee_amounts_discussed": [],
+  "scholarship_details": [],
+  "created_at": "2026-07-09T08:04:34.503824",
+  "last_active": "2026-07-09T08:04:48.631151",
+  "conversation_count": 3
+}

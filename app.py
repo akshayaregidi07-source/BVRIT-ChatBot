@@ -19,7 +19,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 from dotenv import load_dotenv
 
-from chatbot import generate_response, retrieve_relevant_chunks
+from tool_chatbot import generate_tool_response as generate_response
+from chatbot import retrieve_relevant_chunks
 from evaluation import (
     TEST_QUESTIONS,
     evaluate_with_ragas,

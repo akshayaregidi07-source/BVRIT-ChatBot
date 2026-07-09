@@ -61,7 +61,7 @@ export const placeholderMessages: Record<string, ChatMessage[]> = {
 };
 
 export const knowledgeBase: KnowledgeBaseInfo = {
-  filename: 'BVRIT HYDERABAD Institutional Overview.pdf',
+  filename: 'bvrit_college_info.pdf',
   pages: 4,
   chunks: 15,
   indexed: true,

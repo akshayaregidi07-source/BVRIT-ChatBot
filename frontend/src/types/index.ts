@@ -22,6 +22,10 @@ export interface ChatMessage {
   content: string;
   timestamp: Date;
   citations?: Citation[];
+  routing?: string;
+  tool_called?: string;
+  tool_arguments?: string;
+  tool_result?: string;
 }
 
 export interface Citation {
