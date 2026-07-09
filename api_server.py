@@ -52,8 +52,27 @@ def chat(request: ChatRequest):
     """Process a chat query through the tool-enabled RAG pipeline."""
     query = request.query
     
-    # Generate response using the tool-enabled chatbot
-    result = generate_tool_response(query, verbose=False)
+    print(f"\n{'='*60}")
+    print(f"[API] Received query: {query}")
+    print(f"{'='*60}")
+    
+    try:
+        # Generate response using the tool-enabled chatbot
+        result = generate_tool_response(query, verbose=False)
+        print(f"[API] Response routing: {result.get('routing', 'unknown')}")
+        print(f"[API] Answer preview: {result.get('answer', '')[:100]}")
+    except Exception as e:
+        import traceback
+        print(f"[API] CRASH in generate_tool_response: {e}")
+        traceback.print_exc()
+        result = {
+            "answer": f"❌ Error generating response: {str(e)}",
+            "citations": [],
+            "images": [],
+            "has_answer": False,
+            "routing": "error",
+            "tool_result": None,
+        }
     
     answer = result.get("answer", "I'm sorry, I couldn't generate a response.")
     routing = result.get("routing", "unknown")

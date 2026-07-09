@@ -1,0 +1,4 @@
+{
+  "routing": "rag",
+  "answer": "BVRIT offers seven B.Tech programmes across seven departments. The specific departments include:\n\n1. Computer Science & Engineering (CSE)\n2. Information Technology (IT)\n3. Electronics and Communicatio"
+}
